@@ -115,9 +115,12 @@ public final class MetastoreClientUtils {
   }
   
   public static String getCatalogId(Configuration conf) {
+    System.out.println("Checking catalog override config: " + GlueMetastoreClientDelegate.CATALOG_ID_CONF);
     if (StringUtils.isNotEmpty(conf.get(GlueMetastoreClientDelegate.CATALOG_ID_CONF))) {
+      System.out.println("Found catalog override config: " + conf.get(GlueMetastoreClientDelegate.CATALOG_ID_CONF));
       return conf.get(GlueMetastoreClientDelegate.CATALOG_ID_CONF);
     }
+    System.out.println("Found no catalog override.");
     // This case defaults to using the caller's account Id as Catalog Id.
     return null;
   }

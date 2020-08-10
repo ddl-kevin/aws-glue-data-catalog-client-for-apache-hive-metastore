@@ -138,6 +138,7 @@ public class AWSCatalogMetastoreClient implements IMetaStoreClient {
 
     snapshotActiveConf();
     catalogId = MetastoreClientUtils.getCatalogId(conf);
+    System.out.println("Using CatalogId: " + catalogId);
     if (!doesDefaultDBExist()) {
       createDefaultDatabase();
     }
@@ -204,6 +205,7 @@ public class AWSCatalogMetastoreClient implements IMetaStoreClient {
     } else {
       this.catalogId = null;
     }
+    System.out.println("Using CatalogId from Builder: " + catalogId);
 
     GlueClientFactory clientFactory = Objects.firstNonNull(builder.clientFactory, new AWSGlueClientFactory(conf));
     AWSGlueMetastoreFactory metastoreFactory = Objects.firstNonNull(builder.metastoreFactory,
