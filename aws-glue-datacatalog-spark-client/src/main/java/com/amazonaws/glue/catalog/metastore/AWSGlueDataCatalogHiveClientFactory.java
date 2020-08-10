@@ -13,7 +13,7 @@ public class AWSGlueDataCatalogHiveClientFactory implements HiveMetaStoreClientF
       HiveConf conf,
       HiveMetaHookLoader hookLoader
   ) throws MetaException {
-    Properties prop = conf.getAllProperties();
+    java.util.Properties prop = conf.getAllProperties();
     for (String key: prop.stringPropertyNames()) {
         System.out.println(key + ": " + prop.getProperty(key));
     }
