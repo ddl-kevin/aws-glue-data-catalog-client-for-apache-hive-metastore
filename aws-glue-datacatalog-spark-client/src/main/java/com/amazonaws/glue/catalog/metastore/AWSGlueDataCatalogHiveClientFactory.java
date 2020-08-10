@@ -13,7 +13,10 @@ public class AWSGlueDataCatalogHiveClientFactory implements HiveMetaStoreClientF
       HiveConf conf,
       HiveMetaHookLoader hookLoader
   ) throws MetaException {
-    System.out.println("Creating Glue Client with config: " + String.join(",", conf.getAllProperties().stringPropertyNames()));
+    Properties prop = conf.getAllProperties();
+    for (String key: prop.stringPropertyNames()) {
+        System.out.println(key + ": " + prop.getProperty(key));
+    }
     AWSCatalogMetastoreClient client = new AWSCatalogMetastoreClient(conf, hookLoader);
     return client;
   }
